@@ -1,0 +1,33 @@
+ALGORITHM sentence_analyzer
+VAR
+    c : CHAR                 // Current character being read
+    length : INTEGER := 0     // Total number of characters
+    words : INTEGER := 1      // Counter for words (starts at 1 for the first word)
+    vowels : INTEGER := 0     // Counter for vowels
+    
+BEGIN
+    WRITE("Enter a sentence ending with a period:")
+    
+    // The loop continues until we read a period '.'
+    REPEAT
+        READ(c)
+        length := length + 1
+        
+        // 1. Counting vowels (Case insensitive)
+        IF (c = 'a' OR c = 'e' OR c = 'i' OR c = 'o' OR c = 'u' OR c = 'y' OR
+            c = 'A' OR c = 'E' OR c = 'I' OR c = 'O' OR c = 'U' OR c = 'Y') THEN
+            vowels := vowels + 1
+        END_IF
+        
+        // 2. Counting words (Words are separated by a single space)
+        IF (c = ' ') THEN
+            words := words + 1
+        END_IF
+        
+    UNTIL (c = '.')
+    
+    // Output the results
+    WRITE("Total length: ", length)
+    WRITE("Number of words: ", words)
+    WRITE("Number of vowels: ", vowels)
+END
