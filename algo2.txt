@@ -1,0 +1,25 @@
+ALGORITHM Insertion_Sort
+VARIABLES
+    arr : ARRAY OF INTEGERS
+    i, j, key : INTEGER
+
+BEGIN
+    // Iterate through the array starting from the second element
+    FOR i FROM 1 TO length(arr) - 1 DO
+        // Select the element to be inserted
+        key := arr[i]
+        
+        // Initialize j to point at the end of the sorted sequence (i-1)
+        j := i - 1
+        
+        /* Shift elements of the sorted sequence to the right 
+           if they are greater than the key */
+        WHILE (j >= 0 AND arr[j] > key) DO
+            arr[j + 1] := arr[j]
+            j := j - 1
+        END_WHILE
+        
+        // Insert the key into its correct position
+        arr[j + 1] := key
+    END_FOR
+END
